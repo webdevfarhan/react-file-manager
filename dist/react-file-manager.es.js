@@ -2360,7 +2360,7 @@ const Es = ({
         const oe = new FormData(), ce = k == null ? void 0 : k.appendData;
         for (let ae in ce)
           ce[ae] && oe.append(ae, ce[ae]);
-        l ? oe.append("file", null) : oe.append("file", k.file), A.send(oe);
+        l ? (console.log("true"), oe.append("file", null)) : (console.log("false"), oe.append("file", k.file)), A.send(oe);
       });
   };
   ne(() => {

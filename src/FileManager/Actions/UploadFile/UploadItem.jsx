@@ -110,9 +110,11 @@ const UploadItem = ({
         appendData[key] && formData.append(key, appendData[key]);
       }
       if (googleBucketUpload) {
+        console.log("true");
         formData.append("file", null);
       }
       else {
+        console.log("false");
         formData.append("file", fileData.file);
       }
 
