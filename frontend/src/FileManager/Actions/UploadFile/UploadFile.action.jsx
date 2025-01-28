@@ -15,6 +15,7 @@ const UploadFileAction = ({
   acceptedFileTypes,
   onFileUploading,
   onFileUploaded,
+  googleBucketUpload = false
 }) => {
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
@@ -57,7 +58,7 @@ const UploadFileAction = ({
         const error = checkFileError(file);
         error && onError({ type: "upload", message: error }, file);
         return {
-          file: file,
+          file: googleBucketUpload ? null : file,
           appendData: appendData,
           ...(error && { error: error }),
         };
