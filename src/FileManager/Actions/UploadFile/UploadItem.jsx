@@ -17,6 +17,7 @@ const UploadItem = ({
   fileUploadConfig,
   onFileUploaded,
   handleFileRemove,
+  googleBucketUpload = true,
 }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploaded, setIsUploaded] = useState(false);
@@ -108,7 +109,12 @@ const UploadItem = ({
       for (let key in appendData) {
         appendData[key] && formData.append(key, appendData[key]);
       }
-      formData.append("file", fileData.file);
+      if (googleBucketUpload) {
+        formData.append("file", null);
+      }
+      else {
+        formData.append("file", fileData.file);
+      }
 
       xhr.send(formData);
     });
